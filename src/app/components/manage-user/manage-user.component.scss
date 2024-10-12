@@ -1,0 +1,22 @@
+.size-btn-icon {
+    font-size: 2rem;
+}
+
+.table-custom {
+    background-color: white;
+}
+
+::ng-deep .datatable-row-wrapper.ng-star-inserted:hover {
+    background-color: #0db6ccaf;
+    cursor: pointer;
+}
+
+::ng-deep .datatable-header-inner {
+    background-color: #5c8592a9;
+    color: #fff;
+    font-weight: bold;
+}
+
+::ng-deep .ngx-datatable .datatable-body-cell {
+    border-left: 1px solid #34788da9;
+}

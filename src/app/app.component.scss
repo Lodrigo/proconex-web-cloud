@@ -1,0 +1,26 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Isso garante que o conteúdo mínimo preencha a tela inteira */
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    /* Isso faz com que o conteúdo ocupe todo o espaço disponível na vertical */
+}
+
+.ngx-spinner {
+    z-index: 9999;
+    background: transparent !important;
+    opacity: 1 !important;
+}
+
+::ng-deep .is-invalid div.ng-select-container {
+    border: 1px solid #dc3545 !important;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+}
+
+.background-custom {
+    background-color: #ecf0f1;
+}

@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ header }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="ativeModal.close()"></button>
+</div>
+<div class="modal-body">
+    <form (submit)="onSubmit()" [formGroup]="upsertUserForm">
+        <div class="row" *ngIf="!this.user">
+            <div class="col-12 mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="Name" class="form-control" id="Name" formControlName="Name"
+                    [ngClass]="{'is-invalid': displayMessage?.['Name']}">
+                <span class="text-danger" *ngIf="displayMessage?.['Name']">
+                    <p [innerHTML]="displayMessage['Name']"></p>
+                </span>
+            </div>
+            <div class="col-12 mb-3">
+                <label for="UserUPN" class="form-label">User Upn</label>
+                <input type="UserUPN" class="form-control" id="UserUPN" formControlName="UserUPN" [ngClass]="{'is-invalid': displayMessage?.['UserUPN']}">
+                <span class="text-danger" *ngIf="displayMessage?.['UserUPN']">
+                    <p [innerHTML]="displayMessage['UserUPN']"></p>
+                </span>
+            </div>
+        </div>
+        <div class="row" *ngIf="this.user">
+            <div class="col-12">
+                <b>Name: </b><span>{{user.name}}</span>
+            </div>
+            <div class="col-12 mb-3">
+                <b>Type: </b><span>{{user.type}}</span>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <app-select-country-dropdown [upsertUserForm]="upsertUserForm" [isInvalid]="!!displayMessage['Regions']"
+                (selectedCities)="setCitiesSelected($event)"></app-select-country-dropdown>
+            <span class="text-danger" *ngIf="displayMessage?.['Regions']">
+                <p [innerHTML]="displayMessage['Regions']"></p>
+            </span>
+        </div>
+        <div class="col-12">
+            <label class="mb-2">Select the permissions commands</label>
+            <ng-select [items]="userStatusArray" bindLabel="name" bindValue="name" [multiple]="false" formControlName="Status"
+                [ngClass]="{'is-invalid': !!displayMessage['Status']}">
+                <ng-template ng-label-tmp let-item="item">{{ item.name }}</ng-template>
+            </ng-select>
+            <span class="text-danger" *ngIf="displayMessage?.['Status']">
+                <p [innerHTML]="displayMessage['Status']"></p>
+            </span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="ativeModal.close(upsertUserForm)"
+        [disabled]="!upsertUserForm.valid">Save</button>
+</div>

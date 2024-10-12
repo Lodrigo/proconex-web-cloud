@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h4>Clientes</h4>
+            <hr>
+
+            <form [formGroup]="clientForm">
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label class="control-label">Nome</label>
+                        <input formControlName="nome" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Sexo</label>
+                        <input formControlName="sexo" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Nascimento</label>
+                        <input formControlName="nascimento" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="control-label">CPF</label>
+                        <input formControlName="cpf" class="form-control mascara-cpf" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="control-label">RG</label>
+                        <input formControlName="rg" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="control-label">CEP</label>
+                        <input formControlName="cep" class="form-control mascara-cep" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Bairro</label>
+                        <input formControlName="bairro" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Complemento</label>
+                        <input formControlName="complemento" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label class="control-label">Número</label>
+                        <input formControlName="numero" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Município</label>
+                        <input formControlName="municipio" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label class="control-label">Estado</label>
+                        <input formControlName="estado" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Telefone</label>
+                        <input formControlName="telefone" class="form-control mascara-telefone" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">E-mail</label>
+                        <input formControlName="email" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mt-1">
+                    <div *ngIf="actionType == 'details'" class="col-sm-12 col-xs-12 col-md-2 col-lg-2 pt-2 text-end">
+                        <a class="btn btn-info d-block" (click)="clienteEdit()">
+                            Editar
+                        </a>
+                    </div>
+                    <div *ngIf="actionType == 'create'" class="col-sm-12 col-md-2 col-lg-2 pt-2">
+                        <div class="btn-block">
+                            <button class="btn btn-success d-block w-100" (click)="submit()"
+                                [disabled]="!clientForm.valid">
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="actionType == 'delete'" class="col-sm-12 col-xs-12 col-md-2 col-lg-2 pt-2 ">
+                        <a class="btn btn-secondary d-block" (click)="returnClientesList()">
+                            {{ delete() }}
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 pt-2 ">
+                        <a class="btn btn-secondary d-block" (click)="returnClientesList()">
+                            {{ textVoltarOrCancel() }}
+                            <i class="bi bi-arrow-return-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

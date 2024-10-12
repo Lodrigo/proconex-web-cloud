@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="card card">
+        <div class="card-body">
+            <h4>Clientes</h4>
+            <hr>
+
+            <form [formGroup]="filterClientForm" class="smoothed-background mt-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
+                        <a class="btn btn-success d-block" (click)="clientDetails(null, 'create')">
+                            Adicionar
+                        </a>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-9 col-lg-8 mb-2 offset-md-3 offset-lg-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="search"
+                                placeholder="Digite um texto para pesquisar">
+                            <span class="input-group-text btn btn-primary" (click)="getAllClientes()">Pesquisar</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row pb-5 pt-3">
+                <div class="col-12">
+                    <ngx-datatable class="bootstrap table-custom expandable striped" [rows]="rows" [columns]="columns"
+                        [limit]="page.per_page" [headerHeight]="50" (select)='onAddOrSelect($event)'
+                        [selected]="selected" [selectionType]="SelectionType.single" [footerHeight]="50"
+                        [count]="page.total" [columnMode]="'force'" [rowHeight]="'auto'" (sort)="sort($event)"
+                        (page)="setPage($event)" [externalPaging]="true">
+                        <ngx-datatable-column name="Nome" prop="nome"></ngx-datatable-column>
+                        <ngx-datatable-column name="Sexo" prop="sexo" [sortable]="false"></ngx-datatable-column>
+                        <ngx-datatable-column name="Nascimento" prop="nascimento"
+                            [sortable]="false"></ngx-datatable-column>
+                        <ngx-datatable-column name="Telefone" prop="telefone" [sortable]="false"></ngx-datatable-column>
+                        <ngx-datatable-column name="Ações" [maxWidth]="100" [sortable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <button class="btn btn-danger btn-sm" (click)="clientDetails(row.id, 'delete')">
+                                    Apagar
+                                </button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

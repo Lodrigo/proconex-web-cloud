@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex d-inline-flex align-items-end text-white">
+            <div class="size-btn-icon me-1">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <h2 class="flex-grow-1 text-right">User List</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="button" class="btn btn-success" (click)="onAddOrSelect('create')">
+                <i class="bi bi-person-vcard"></i>
+                Add new user
+            </button>
+        </div>
+    </div>
+
+    <div class="row pb-5 pt-3">
+        <div class="col-12">
+            <ngx-datatable class="bootstrap table-custom expandable striped" [rows]="rows" [columns]="columns"
+                [limit]="page.per_page" [selected]="selected" [selectionType]="SelectionType.single" [headerHeight]="50"
+                [footerHeight]="50" [count]="page.total" [columnMode]="'force'" [rowHeight]="'auto'"
+                (sort)="sort($event)" (page)="setPage($event)" [externalPaging]="true"
+                (select)='onAddOrSelect("update")'>
+                <ngx-datatable-column name="Email" prop="userUPN"></ngx-datatable-column>
+                <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column>
+                <ngx-datatable-column name="Regions" prop="regions"></ngx-datatable-column>
+                <ngx-datatable-column name="Type" prop="type" [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Status" prop="status" [sortable]="false"></ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>

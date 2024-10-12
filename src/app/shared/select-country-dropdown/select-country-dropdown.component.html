@@ -1,0 +1,7 @@
+<form [formGroup]="upsertUserForm">
+    <label class="mb-2">Select the countries the user will have access to generate quotes.</label>
+    <ng-select [items]="countries" bindLabel="name" bindValue="name" [multiple]="true" 
+        formControlName="Regions" [ngClass]="{'is-invalid': isInvalid}">
+        <ng-template ng-label-tmp let-item="item">{{ item.name }}</ng-template>
+    </ng-select>
+</form>

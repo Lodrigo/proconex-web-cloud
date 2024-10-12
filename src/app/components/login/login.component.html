@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row full-height">
+        <div class="col-sm-12 offset-md-4 col-lg-4 my-auto">
+            <div class="card shadow-lg">
+                <div class="card-header text-center">
+                    <strong>Acesse sua conta</strong>
+                </div>
+                <div class="card-body">
+                    <form (submit)="onSubmit()" [formGroup]="loginForm">
+                        <div class="row">
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                    </div>
+                                    <input class="form-control" formControlName="Email"
+                                        placeholder="Informe o seu e-mail"
+                                        [ngClass]="{'is-invalid': displayMessage?.['Email']}" autofocus>
+                                </div>
+                                <small>
+                                    <span class="text-danger" *ngIf="displayMessage?.['Email']">
+                                        <p [innerHTML]="displayMessage['Email']"></p>
+                                    </span>
+                                </small>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                    </div>
+                                    <input class="form-control" formControlName="Senha" placeholder="Informe a sua senha"
+                                        [ngClass]="{'is-invalid': displayMessage?.['Senha']}">
+                                </div>
+                                <small>
+                                    <span class="text-danger" *ngIf="displayMessage?.['Senha']">
+                                        <p [innerHTML]="displayMessage['Senha']"></p>
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-primary col-12" (click)="onSubmit()">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
